@@ -1,9 +1,9 @@
 package by.imix.games.gamecore.implDefault.web;
 
+import by.imix.cms.entity.User;
 import by.imix.games.gamecore.game.Room;
 import by.imix.games.gamecore.user.UserRoom;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import rw.gcktc.cms.usermanager.User;
 
 import java.util.ArrayList;
 import java.util.Date;

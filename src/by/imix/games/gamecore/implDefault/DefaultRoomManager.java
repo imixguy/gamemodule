@@ -1,5 +1,7 @@
 package by.imix.games.gamecore.implDefault;
 
+import by.imix.cms.entity.User;
+import by.imix.cms.web.security.UserWeb;
 import by.imix.games.gamecore.ActionRoomI;
 import by.imix.games.gamecore.game.Room;
 import by.imix.games.gamecore.game.RoomManager;
@@ -11,10 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
-import rw.gcktc.cms.usermanager.User;
-import rw.gcktc.webcms.security.UserWeb;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by miha on 16.12.2014.
@@ -128,7 +132,7 @@ public class DefaultRoomManager implements RoomManager {
         if(user instanceof String){
             return null;
         }
-        return ((UserWeb) user).getUserw();
+        return ((UserWeb) user).getUser();
     }
 }
 

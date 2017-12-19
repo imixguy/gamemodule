@@ -15,6 +15,7 @@
         <java.version>1.7</java.version>
         <hibernate.version>4.3.11.Final</hibernate.version>
         <spring.version>4.2.0.RELEASE</spring.version>
+        <spring.security.version>4.0.1.RELEASE</spring.security.version>
         <mysql-connector.version>5.1.31</mysql-connector.version>
         <imix.version>1.0.0</imix.version>
     </properties>
@@ -27,6 +28,16 @@
     </repositories>
 
     <dependencies>
+        <dependency>
+            <groupId>by.imix.cms</groupId>
+            <artifactId>node</artifactId>
+            <version>${imix.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>by.imix.cms</groupId>
+            <artifactId>cmscore</artifactId>
+            <version>${imix.version}</version>
+        </dependency>
         <dependency>
             <groupId>by.imix.cms</groupId>
             <artifactId>node-hib</artifactId>
@@ -76,6 +87,13 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${spring.security.version}</version>
+
         </dependency>
 
         <!--<dependency>-->

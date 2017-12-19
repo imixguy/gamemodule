@@ -1,14 +1,19 @@
 package by.imix.games.monopoly;
 
+import by.imix.cms.entity.User;
 import by.imix.games.gamecore.ActionRoomI;
 import by.imix.games.gamecore.card.Card;
 import by.imix.games.gamecore.implDefault.web.DefaultUserRoom;
 import by.imix.games.monopoly.web.ActionUser;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import rw.gcktc.cms.usermanager.User;
 
 import java.security.SecureRandom;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by miha on 15.12.2014.
