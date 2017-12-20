@@ -124,7 +124,7 @@
     </dependencies>
 
     <build>
-        <directory>${target.directory}</directory>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -152,6 +152,8 @@
                         <!--</resource>-->
                     </webResources>
 
+                    <outputDirectory>${session.executionRootDirectory}/target</outputDirectory>
+                    <warName>gamemodule-web-${project.version}</warName>
                     <!--<outputDirectory>${session.executionRootDirectory}/target</outputDirectory>-->
                     <!--<warName>imixcmscore-${project.version}</warName>-->
 
@@ -163,6 +165,16 @@
                             <buildNumber>${buildNumber}</buildNumber>-->
                         </manifestEntries>
                     </archive>
+                    <packagingExcludes>
+                        resources/images/games/map2004.png,
+                        resources/images/games/map-st.osm.xml,
+                        resources/images/games/map.osm.xml,
+                        resources/images/games/monopoly/pole.psd,
+                        resources/images/games/monopoly/pole.psd,
+                        resources/images/games/imaginarium/cards/Pandora/*,
+                        resources/images/games/imaginarium/cards/Himera/*,
+                        resources/images/games/imaginarium/cards/Ariadna/*,
+                    </packagingExcludes>
                 </configuration>
             </plugin>
         </plugins>
