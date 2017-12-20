@@ -7,7 +7,7 @@
     <groupId>by.imix.games</groupId>
     <artifactId>gamemodule</artifactId>
     <description>game module</description>
-    <version>1.0</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -32,67 +32,79 @@
             <groupId>by.imix.cms</groupId>
             <artifactId>node</artifactId>
             <version>${imix.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>by.imix.cms</groupId>
             <artifactId>cmscore</artifactId>
             <version>${imix.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>by.imix.cms</groupId>
             <artifactId>node-hib</artifactId>
             <version>${imix.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
             <version>${spring.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
             <version>${spring.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
             <version>${spring.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
             <version>${spring.security.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <!--<dependency>-->
@@ -106,6 +118,7 @@
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
             <version>1.11.2</version>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>
