@@ -126,10 +126,10 @@
     <build>
         <defaultGoal>install</defaultGoal>
 
-        <sourceDirectory>src</sourceDirectory>
+        <sourceDirectory>java</sourceDirectory>
         <resources>
             <resource>
-                <directory>${basedir}/src</directory>
+                <directory>${basedir}/java</directory>
                 <includes>
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
