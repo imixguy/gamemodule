@@ -18,6 +18,7 @@ public abstract class CardDefault implements Card {
 
     /**
      * Method return Name card
+     *
      * @return name card
      */
     public String getName() {
@@ -26,6 +27,7 @@ public abstract class CardDefault implements Card {
 
     /**
      * Method set name card
+     *
      * @param name - name card
      */
     public void setName(String name) {
@@ -34,6 +36,7 @@ public abstract class CardDefault implements Card {
 
     /**
      * Method return path to image card
+     *
      * @return path to image card
      */
     public String getImage() {
@@ -42,6 +45,7 @@ public abstract class CardDefault implements Card {
 
     /**
      * Method set for path to image card
+     *
      * @param image path to image card
      */
     public void setImage(String image) {

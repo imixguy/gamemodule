@@ -7,6 +7,7 @@ package by.imix.games.gamecore.user;
 public interface UserCredit {
     //set credit
     void setCredit(int credit);
+
     //what summ credit take user
     int getCredit();
 }

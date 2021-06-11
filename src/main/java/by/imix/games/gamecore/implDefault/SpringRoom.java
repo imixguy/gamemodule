@@ -17,11 +17,11 @@ public class SpringRoom implements Room {
     //список наблюдателей
     private List<UserRoom> listViewUser;
     //максимальное количество играков
-    private int maxCountUser=0;
+    private int maxCountUser = 0;
     //Номер комнаты
     private long numberRoom;
     //Откыта для входа
-    private volatile Boolean openRoom=true;
+    private volatile Boolean openRoom = true;
 
     public SpringRoom() {
         this.listUser = new ArrayList<UserRoom>();
@@ -63,18 +63,18 @@ public class SpringRoom implements Room {
 
     @Override
     //Получить номер комнаты
-    public long getNumberRoom(){
+    public long getNumberRoom() {
         return numberRoom;
     }
 
     @Override
     public void setNumberRoom(long numberRoom) {
-        this.numberRoom=numberRoom;
+        this.numberRoom = numberRoom;
     }
 
     @Override
     public boolean isPermission(UserRoom user) {
-        if(this.isOpenRoom()){
+        if (this.isOpenRoom()) {
             return true;
         }
         return false;

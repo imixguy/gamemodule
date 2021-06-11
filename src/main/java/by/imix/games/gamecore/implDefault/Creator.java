@@ -9,5 +9,6 @@ import by.imix.games.gamecore.user.UserRoom;
  */
 public abstract class Creator {
     public abstract Room createRoom();
+
     public abstract UserRoom createUser();
 }

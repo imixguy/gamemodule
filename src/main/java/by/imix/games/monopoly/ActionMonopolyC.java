@@ -5,41 +5,41 @@ import by.imix.games.gamecore.ActionRoomC;
 /**
  * Created by miha on 25.12.2014.
  */
-public class ActionMonopolyC extends ActionRoomC implements AvailableActionMonopoly{
-    private boolean throwCube=false;
-    private boolean buyFirm=false;
-    private boolean buyFilial=false;
-    private boolean takeCredit=false;
-    private boolean giveCredit=false;
+public class ActionMonopolyC extends ActionRoomC implements AvailableActionMonopoly {
+    private boolean throwCube = false;
+    private boolean buyFirm = false;
+    private boolean buyFilial = false;
+    private boolean takeCredit = false;
+    private boolean giveCredit = false;
     //заложить фирму
-    private boolean putFirm=false;
+    private boolean putFirm = false;
     //выкупить фирму
-    private boolean redeemFirm=false;
-    private boolean sellFilial=false;
-    private boolean payPenalty=false;
-    private boolean startAuction=false;
-    private boolean auctionBuy=false;
-    private boolean auctionFold=false;
-    private boolean gameClose=false;
-    private boolean gameEnd=true;
+    private boolean redeemFirm = false;
+    private boolean sellFilial = false;
+    private boolean payPenalty = false;
+    private boolean startAuction = false;
+    private boolean auctionBuy = false;
+    private boolean auctionFold = false;
+    private boolean gameClose = false;
+    private boolean gameEnd = true;
 
 
     @Override
-    public void clearAction(){
+    public void clearAction() {
         super.clearAction();
-        throwCube=false;
-        buyFirm=false;
-        buyFilial=false;
-        takeCredit=false;
-        giveCredit=false;
-        putFirm=false;
-        redeemFirm=false;
-        sellFilial=false;
-        payPenalty=false;
-        startAuction=false;
-        auctionBuy=false;
-        auctionFold=false;
-        gameClose=false;
+        throwCube = false;
+        buyFirm = false;
+        buyFilial = false;
+        takeCredit = false;
+        giveCredit = false;
+        putFirm = false;
+        redeemFirm = false;
+        sellFilial = false;
+        payPenalty = false;
+        startAuction = false;
+        auctionBuy = false;
+        auctionFold = false;
+        gameClose = false;
     }
 
     public boolean isThrowCube() {
@@ -145,7 +145,7 @@ public class ActionMonopolyC extends ActionRoomC implements AvailableActionMonop
 
     @Override
     public void setGameClose(boolean gameClose) {
-        this.gameClose=gameClose;
+        this.gameClose = gameClose;
     }
 
     public boolean isGameEnd() {

@@ -18,26 +18,31 @@ public class CardCheating extends CardDefault {
 
     /**
      * Constructor with name and count steps for skip
-     * @param name - name
+     *
+     * @param name      - name
      * @param numPrison - count step need skip
      */
-    public CardCheating(String name,int numPrison){
-        this.numPrison=numPrison;
+    public CardCheating(String name, int numPrison) {
+        this.numPrison = numPrison;
         setName(name);
     }
 
-    /**{@inheritDoc}*/
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void transferCardForUser(Room room, UserRoom userRoom) {
         GameMonopoly gameMonopoly = (GameMonopoly) room;
         UserMonopoly userMonopoly = (UserMonopoly) userRoom;
         userMonopoly.setPrison(1);
-        userMonopoly.setPenalty(((CardPrison)gameMonopoly.getListCard().get(numPrison)).getPenalty());
+        userMonopoly.setPenalty(((CardPrison) gameMonopoly.getListCard().get(numPrison)).getPenalty());
         userMonopoly.setIndexPosition(numPrison);
         ActionUser.createInstance(gameMonopoly, userMonopoly, GO_PRISON, userMonopoly);
     }
 
-    /**{@inheritDoc}*/
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void dropInToCard(Room room, UserRoom userRoom) {
 
@@ -45,6 +50,7 @@ public class CardCheating extends CardDefault {
 
     /**
      * Count step need skip
+     *
      * @return count step need skip
      */
     public int getNumPrison() {
@@ -53,6 +59,7 @@ public class CardCheating extends CardDefault {
 
     /**
      * Set count step need skip
+     *
      * @param numPrison set count step need skip
      */
     public void setNumPrison(int numPrison) {

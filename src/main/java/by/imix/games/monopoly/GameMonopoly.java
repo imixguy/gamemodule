@@ -14,14 +14,18 @@ import java.util.Set;
  */
 public interface GameMonopoly extends Room {
     Room getRoom();
+
     void setRoom(Room room);
 
     //стартовала ли игра
     boolean isStartGame();
+
     //получить список карт
     List<Card> getListCard();
+
     //следующий игрок
     void nextGamer();
+
     //получить текущего пльзователя
     UserMonopoly getCurentUser();
 
@@ -30,8 +34,10 @@ public interface GameMonopoly extends Room {
 
     //стартовые деньги
     void setStartMoney(int credit);
+
     //деньги за круг
     void setCircleMoney(int circleMoney);
+
     //максимальный кредит
     void setCredit(int credit);
 
@@ -43,45 +49,60 @@ public interface GameMonopoly extends Room {
 
     //Бросить кубик
     int[] throwCube();
+
     //купить фирму
     void buyFirm();
+
     //купить филиал
     void buyFilial(int[] indFirm);
+
     //оплатить штраф
     void payPenalty();
+
     //объявить аукцион
     void startAuction();
+
     //Остановить аукцион
     void stopAuction();
+
     //заложить фирму
     void putFirm(int[] indFirm);
+
     //продать филиал
     void sellFilial(Set<Integer> indFirm);
+
     //выкупить фирму
     void redeemFirm(int[] indFirm);
+
     //Закончить игру(сдаться)
     void gameEnd(UserMonopoly user);
+
     //Закрыть окно и выйти окончательно из игры
     void gameClose(UserMonopoly user);
 
     //возвращает индексы фирм которые можно заложить
     Collection<Integer> getPossibleFirm(String type);
+
     //возвращает индексы фирм которые может обменять пользователь с именем nameUser
     Collection<Integer> getPossibleFirmCh(String nameUser);
 
     void penaltyCheating(UserMonopoly user);
+
     void penaltyCheating(UserMonopoly user, Object obj);
 
     void canBuyFilial();
 
     //получить список монополий
     Map<Integer, Set<CardFirm>> getAllMonopoly();
+
     Map<Integer, Set<CardFirm>> getAllMonopoly(UserMonopoly user);
 
     //предложение обмена текущим игроком (Предлагает фирмы indFirm и денег money) игроку с именем userName
     //запрашивает фирмы indFirm2 и денег money2
     void changeFirm(Set<Integer> indFirm, Set<Integer> indFirm2, int money, int money2, String userName);
+
     void changeFirm(ChangeFirm changeFirm);
+
     //согласие с предложенным обменом либо не согласие зависит от типа type CHANGE_FIRM_CANCAL - не согласен, иначе CHANGE_FIRM_OK
     void changeFirm(ActionMonopolyE type);
 

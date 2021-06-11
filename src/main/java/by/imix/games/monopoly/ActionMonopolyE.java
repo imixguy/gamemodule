@@ -5,73 +5,73 @@ import by.imix.games.gamecore.ActionRoom;
 /**
  * Created by miha on 06.01.2015.
  */
-public enum ActionMonopolyE  implements ActionRoom {
-    START_GAME ("startGame"),
+public enum ActionMonopolyE implements ActionRoom {
+    START_GAME("startGame"),
     //бросает кубик
-    THROW_CUBE ("throwCube"),
+    THROW_CUBE("throwCube"),
     //идет на клетку
-    GO_SELL ("goSell"),
+    GO_SELL("goSell"),
     //идти в тюрьму
-    GO_PRISON ("goPrison"),
-    BUY_FIRM ("buyFirm"),
-    BUY_FILIAL ("buyFilial"),
+    GO_PRISON("goPrison"),
+    BUY_FIRM("buyFirm"),
+    BUY_FILIAL("buyFilial"),
     //взял кредит
-    TAKE_CREDIT ("takeCredit"),
+    TAKE_CREDIT("takeCredit"),
     //вернул кредит
-    GIVE_CREDIT ("giveCredit"),
+    GIVE_CREDIT("giveCredit"),
     //заложить фирму
-    PUT_FIRM ("putFirm"),
+    PUT_FIRM("putFirm"),
     //выкупить фирму
-    REDEEM_FIRM ("redeemFirm"),
+    REDEEM_FIRM("redeemFirm"),
     //Обмен фирмами (предложить обмен)
-    CHANGE_FIRM ("changeFirm"),
+    CHANGE_FIRM("changeFirm"),
     //Обмен фирмами согласится
-    CHANGE_FIRM_OK ("changeFirmApprove"),
+    CHANGE_FIRM_OK("changeFirmApprove"),
     //Обмен фирмами отказать
-    CHANGE_FIRM_CANCAL ("changeFirmReject"),
+    CHANGE_FIRM_CANCAL("changeFirmReject"),
     //продал филиал
-    SELL_FILIAL ("sellFilial"),
+    SELL_FILIAL("sellFilial"),
     //получил штраф
-    GET_PENALTY ("getPenalty"),
+    GET_PENALTY("getPenalty"),
     //заплатил штраф
-    PAY_PENALTY ("payPenalty"),
+    PAY_PENALTY("payPenalty"),
     //получил доход
-    RECEIVE_INCOME ("receiveIncome"),
+    RECEIVE_INCOME("receiveIncome"),
     //штраф за обман
-    PENALTY_CHEATING ("penaltyCheating"),
+    PENALTY_CHEATING("penaltyCheating"),
     //смена пользователя
-    CHANGE_USER ("changeUser"),
+    CHANGE_USER("changeUser"),
     //предлагает обмен
-    EXCHANGE_OFFERS ("exchange_offers"),
+    EXCHANGE_OFFERS("exchange_offers"),
     //Объявлен аукцион
-    AUCTION_START ("auctionStart"),
+    AUCTION_START("auctionStart"),
     //принял цену для покупки
-    AUCTION_BUY ("auctionBuy"),
+    AUCTION_BUY("auctionBuy"),
     //выходит из аукциона
-    AUCTION_FOLD ("aucionFold"),
+    AUCTION_FOLD("aucionFold"),
     //меняем пользователя учавствующего в аукционе
-    AUCTION_CHANGE_USER ("auctionChangeUser"),
+    AUCTION_CHANGE_USER("auctionChangeUser"),
     //аукцион не состоялся
-    AUCTION_BRACK ("auctionBrack"),
+    AUCTION_BRACK("auctionBrack"),
     //не хватает денег
-    NOT_MONEY ("notMoney"),
+    NOT_MONEY("notMoney"),
     //игрок выиграл
-    WIN ("win"),
+    WIN("win"),
     //игрок проиграл
-    LOOSE ("loose"),
+    LOOSE("loose"),
     //Вернуть в банк
-    RETURN_IN_BANK ("returnInBank"),
+    RETURN_IN_BANK("returnInBank"),
     //Cдаться
-    GAME_END ("gameEnd"),
+    GAME_END("gameEnd"),
     //Выйти из игры
-    GAME_CLOSE ("gameClose"),
+    GAME_CLOSE("gameClose"),
     //Отправить сообщение
-    SEND_MESSAGE ("sendMessage");
+    SEND_MESSAGE("sendMessage");
 
-    private String key="";
+    private String key = "";
 
     private ActionMonopolyE(String key) {
-        this.key=key;
+        this.key = key;
     }
 
     public String getKey() {

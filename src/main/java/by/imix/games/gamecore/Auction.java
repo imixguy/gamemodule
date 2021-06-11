@@ -7,6 +7,7 @@ package by.imix.games.gamecore;
 public interface Auction {
     //Create auction
     void startAuction();
+
     //Stop Auction
     void stopAuction();
 }

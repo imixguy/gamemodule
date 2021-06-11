@@ -19,21 +19,21 @@ import java.util.Set;
  * Created by miha on 15.12.2014.
  */
 
-public class UserMonopolyImpl extends DefaultUserRoom implements UserMonopoly{
+public class UserMonopolyImpl extends DefaultUserRoom implements UserMonopoly {
     //money
     private int money;
     //penalty
     private int penalty;
     @JsonIgnore
-    private SecureRandom rand=new SecureRandom();
+    private SecureRandom rand = new SecureRandom();
     //position of user
-    private int indexPosition=0;
+    private int indexPosition = 0;
     //credit for user
     private int credit;
     //active user or not
-    private boolean activGamer=false;
+    private boolean activGamer = false;
     //go Forward or back;
-    private boolean goForward=true;
+    private boolean goForward = true;
     //List each actions of user, after execute to cleanup
     @JsonIgnore
     private List<ActionUser> actionsAllUser;
@@ -41,51 +41,54 @@ public class UserMonopolyImpl extends DefaultUserRoom implements UserMonopoly{
     //list bought cards(firm)
     private List<Card> listBuyCard;
     //louse
-    private boolean loose=false;
+    private boolean loose = false;
     //win
-    private boolean win=false;
+    private boolean win = false;
     @JsonIgnore
     //it is checked that user threw cube
-    private boolean throwCubs=false;
+    private boolean throwCubs = false;
     //количество выкинутых дублей за один ход
-    private int throwDouble=0;
+    private int throwDouble = 0;
     //количество преложенных обменов за один ход
-    private int changeFirmCount=0;
+    private int changeFirmCount = 0;
     //Список монополий в которых был куплен филиал на текущем шаге.
     private Set<Integer> monopByFilThisStep;
     //Находится ли пользователь в тюрьме и сколько ходов 0 - не находится.
-    private int prison=0;
+    private int prison = 0;
     //list available action
     @JsonIgnore
     //private Set<String> listAvailableActions;
     private Set availableAction;
 
-    public UserMonopolyImpl(){
+    public UserMonopolyImpl() {
         this(null, 1);
     }
 
-    public UserMonopolyImpl(User user){
+    public UserMonopolyImpl(User user) {
         this(user, 1);
     }
 
     public UserMonopolyImpl(User user, int maxCountActiveRoom) {
-        this(user, maxCountActiveRoom,0);
+        this(user, maxCountActiveRoom, 0);
     }
 
     public UserMonopolyImpl(User user, int maxCountActiveRoom, Integer money) {
-        super(user,maxCountActiveRoom);
+        super(user, maxCountActiveRoom);
         //setAvailableAction(new ActionMonopolyC());
 
         this.money = money;
-        actionsAllUser=new ArrayList<>();
-        monopByFilThisStep=new HashSet<>();
+        actionsAllUser = new ArrayList<>();
+        monopByFilThisStep = new HashSet<>();
 
-        listBuyCard=new ArrayList<>();
-        availableAction=EnumSet.noneOf(ActionRoomI.class);
+        listBuyCard = new ArrayList<>();
+        availableAction = EnumSet.noneOf(ActionRoomI.class);
     }
 
     @Override
-    public Set getAvailableAction(){return availableAction;}
+    public Set getAvailableAction() {
+        return availableAction;
+    }
+
     @Override
     public void setAvailableAction(Set availableAction) {
         this.availableAction = availableAction;
@@ -130,10 +133,12 @@ public class UserMonopolyImpl extends DefaultUserRoom implements UserMonopoly{
     public void setActivGamer(boolean activGamer) {
         this.activGamer = activGamer;
     }
+
     @Override
     public boolean isGoForward() {
         return goForward;
     }
+
     @Override
     public void setGoForward(boolean goForward) {
         this.goForward = goForward;
@@ -163,19 +168,19 @@ public class UserMonopolyImpl extends DefaultUserRoom implements UserMonopoly{
 
     @Override
     public void setLoose(boolean key) {
-        this.loose=key;
+        this.loose = key;
     }
 
     @Override
     public void setWin(boolean key) {
-        this.win=key;
+        this.win = key;
     }
 
     @Override
     public void throwDouble(boolean yes) {
-        if(yes) {
+        if (yes) {
             this.throwDouble += 1;
-        }else {
+        } else {
             this.throwDouble = 0;
         }
     }
@@ -195,14 +200,14 @@ public class UserMonopolyImpl extends DefaultUserRoom implements UserMonopoly{
 
     @Override
     public void setMonopByFilThisStep(Collection<Integer> monopByFilThisStep) {
-            this.monopByFilThisStep = (Set<Integer>) monopByFilThisStep;
+        this.monopByFilThisStep = (Set<Integer>) monopByFilThisStep;
     }
 
 
     @Override
     public boolean isMonopByFilThisStep(int numMonopoly) {
-        for(Integer monopN:monopByFilThisStep){
-            if(monopN.intValue()==numMonopoly){
+        for (Integer monopN : monopByFilThisStep) {
+            if (monopN.intValue() == numMonopoly) {
                 return true;
             }
         }
@@ -219,7 +224,7 @@ public class UserMonopolyImpl extends DefaultUserRoom implements UserMonopoly{
 
     @Override
     public void doChangeFirm() {
-        this.changeFirmCount+=1;
+        this.changeFirmCount += 1;
     }
 
     public void setChangeFirmCount(int changeFirmCount) {

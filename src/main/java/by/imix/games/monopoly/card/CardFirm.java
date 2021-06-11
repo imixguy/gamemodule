@@ -39,15 +39,15 @@ public class CardFirm extends CardDefault {
     private int countFirmInMonopoly;
     private int penalty;
     //фирма находится в залоге
-    private boolean put=false;
+    private boolean put = false;
 
     public CardFirm(String name, int price, int countFilial, int filialPrice, int numMonopoly, int countFirmInMonopoly) {
         this.price = price;
         setName(name);
         this.countFilial = countFilial;
         this.filialPrice = filialPrice;
-        this.numMonopoly=numMonopoly;
-        this.countFirmInMonopoly=countFirmInMonopoly;
+        this.numMonopoly = numMonopoly;
+        this.countFirmInMonopoly = countFirmInMonopoly;
     }
 
     public int getId() {
@@ -129,12 +129,12 @@ public class CardFirm extends CardDefault {
             }
             userMonopoly.getAvailableAction().add(AUCTION_START);
         } else {
-            if (userMonopoly != getUserOwner() && !isPut() ) {
+            if (userMonopoly != getUserOwner() && !isPut()) {
                 userMonopoly.setPenalty(0 - getPenalty());
-                if(userMonopoly.getMoney()>getPenalty()) {
+                if (userMonopoly.getMoney() > getPenalty()) {
                     userMonopoly.getAvailableAction().add(PAY_PENALTY);
                 }
-            }else{
+            } else {
                 gameMonopoly.nextGamer();
                 return;
             }
@@ -147,22 +147,22 @@ public class CardFirm extends CardDefault {
     }
 
     //купить филиал
-    public void buyFilial(MonopolyGame monopolyGame,UserMonopoly user){
-        if(getFilialStay()< getCountFilial() && user.getMoney()>=getFilialPrice()) {
+    public void buyFilial(MonopolyGame monopolyGame, UserMonopoly user) {
+        if (getFilialStay() < getCountFilial() && user.getMoney() >= getFilialPrice()) {
             user.setMoney(user.getMoney() - getFilialPrice());
-            setFilialStay(getFilialStay()+1);
+            setFilialStay(getFilialStay() + 1);
             ActionUser.createInstance(monopolyGame, user, BUY_FILIAL, this);
-        }else{
+        } else {
             // штраф
             monopolyGame.penaltyCheating(user);
         }
     }
 
-    public void sellFilial(MonopolyGame monopolyGame,UserMonopoly user){
-        if(getUserOwner()!=null && user==getUserOwner() && getFilialStay()>0) {
+    public void sellFilial(MonopolyGame monopolyGame, UserMonopoly user) {
+        if (getUserOwner() != null && user == getUserOwner() && getFilialStay() > 0) {
             user.setMoney(user.getMoney() + getFilialPrice());
-            setFilialStay(getFilialStay()-1);
-        }else{
+            setFilialStay(getFilialStay() - 1);
+        } else {
             //штраф
             monopolyGame.penaltyCheating(user);
         }
@@ -171,21 +171,21 @@ public class CardFirm extends CardDefault {
     //вернуть в банк
     public void returnInBank(GameMonopoly gameMonopoly) {
         //фирму в банк деньги пользователю
-        userOwner.setMoney(userOwner.getMoney()+getFilialStay()*getFilialPrice()+getPrice());
+        userOwner.setMoney(userOwner.getMoney() + getFilialStay() * getFilialPrice() + getPrice());
         setUserOwner(null);
     }
 
     public int getPenalty() {
-        return Math.round(getPrice()/5+(getPrice()*(filialStay*filialStay))/10);
+        return Math.round(getPrice() / 5 + (getPrice() * (filialStay * filialStay)) / 10);
     }
 
 
     public boolean putFirm(MonopolyGame monopolyGame, UserMonopoly curentUser) {
-        if(getUserOwner()==curentUser & getFilialStay()==0){
-            curentUser.setMoney(curentUser.getMoney()+Math.round(getPrice()/2));
-            put=true;
+        if (getUserOwner() == curentUser & getFilialStay() == 0) {
+            curentUser.setMoney(curentUser.getMoney() + Math.round(getPrice() / 2));
+            put = true;
             return true;
-        }else{
+        } else {
             //штраф
             monopolyGame.penaltyCheating(curentUser);
             return false;
@@ -193,11 +193,11 @@ public class CardFirm extends CardDefault {
     }
 
     public boolean redeemFirm(MonopolyGame monopolyGame, UserMonopoly curentUser) {
-        if(getUserOwner()==curentUser && isPut() && curentUser.getMoney()>getPrice()){
-            curentUser.setMoney(curentUser.getMoney()-getPrice());
-            put=false;
+        if (getUserOwner() == curentUser && isPut() && curentUser.getMoney() > getPrice()) {
+            curentUser.setMoney(curentUser.getMoney() - getPrice());
+            put = false;
             return true;
-        }else{
+        } else {
             //штраф
             monopolyGame.penaltyCheating(curentUser);
             return false;

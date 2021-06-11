@@ -20,9 +20,9 @@ public interface UserAuction {
     void setAvailableAction(Set availableAction);
 
 
-
     //get ll auction user and clear
     List<ActionUser> getAndClearActionsAllUser();
+
     //add user to auction
     boolean addActionUser(ActionUser actionsAllUser);
 

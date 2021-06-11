@@ -9,11 +9,14 @@ import by.imix.games.gamecore.user.UserRoom;
 public interface UserImaginarium extends UserRoom {
 
     void setPenalty(int penalty);
+
     int getPenalty();
 
     int getIndexPosition();
+
     void setIndexPosition(int indexPosition);
 
     boolean isGoForward();
+
     void setGoForward(boolean goForward);
 }

@@ -7,10 +7,13 @@ package by.imix.games.gamecore.user;
 public interface UserGame {
     //outside user
     void setUser(Object user);
+
     //Name User
     String getName();
+
     //user is active user
     boolean isActivGamer();
+
     //set active user
     void setActivGamer(boolean activGamer);
 }

@@ -10,6 +10,7 @@ import by.imix.games.gamecore.user.UserRoom;
 public interface Card {
     /**
      * Method return path to image card
+     *
      * @return path to image card
      */
     String getImage();

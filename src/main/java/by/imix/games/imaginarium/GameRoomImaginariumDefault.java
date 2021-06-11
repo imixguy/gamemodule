@@ -11,37 +11,49 @@ import java.util.List;
  * Created by miha on 26.07.2017.
  */
 public class GameRoomImaginariumDefault extends GameRoomDefault implements GameRoomImaginarium {
-    /**{@inheritDoc}*/
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Room getRoom() {
         return null;
     }
 
-    /**{@inheritDoc}*/
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setRoom(Room room) {
 
     }
 
-    /**{@inheritDoc}*/
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean isStartGame() {
         return false;
     }
 
-    /**{@inheritDoc}*/
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Card> getListCard() {
         return null;
     }
 
-    /**{@inheritDoc}*/
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void nextGamer() {
 
     }
 
-    /**{@inheritDoc}*/
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public UserRoom getCurentUser() {
         return null;

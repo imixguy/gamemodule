@@ -27,22 +27,26 @@ public abstract class DefaultUserRoom implements UserRoom {
     private Date lastIn;
 
 
-    public  DefaultUserRoom(){this(null,1);}
+    public DefaultUserRoom() {
+        this(null, 1);
+    }
 
-    public DefaultUserRoom(User user){
-        this(user,1);
+    public DefaultUserRoom(User user) {
+        this(user, 1);
     }
 
     public DefaultUserRoom(User user, int maxCountActiveRoom) {
         this.user = user;
-        this.activeRooms=new ArrayList<>();
-        this.maxCountActiveRoom=maxCountActiveRoom;
+        this.activeRooms = new ArrayList<>();
+        this.maxCountActiveRoom = maxCountActiveRoom;
 
     }
 
-    /**{@inheritDoc}*/
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public List<Room> getActiveRooms(){
+    public List<Room> getActiveRooms() {
         return activeRooms;
     }
 
@@ -51,25 +55,33 @@ public abstract class DefaultUserRoom implements UserRoom {
         return user;
     }
 
-    /**{@inheritDoc}*/
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setUser(Object user) {
-        this.user = (User)user;
+        this.user = (User) user;
     }
 
-    /**{@inheritDoc}*/
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getName() {
         return user.getName();
     }
 
-    /**{@inheritDoc}*/
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void checkedTime() {
-        lastIn=new Date();
+        lastIn = new Date();
     }
 
-    /**{@inheritDoc}*/
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Date getLastIn() {
         return lastIn;

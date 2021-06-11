@@ -4,11 +4,12 @@ package by.imix.games.gamecore;
  * Created by miha on 25.12.2014.
  * All available action for room
  */
-public class ActionRoomC implements AvailableAction{
+public class ActionRoomC implements AvailableAction {
     private boolean createRoom;
 
     /**
      * Check that room created
+     *
      * @return true - created
      */
     public boolean isCreateRoom() {
@@ -23,9 +24,11 @@ public class ActionRoomC implements AvailableAction{
     }
 
 
-    /**{@inheritDoc}*/
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void clearAction() {
-        createRoom=false;
+        createRoom = false;
     }
 }

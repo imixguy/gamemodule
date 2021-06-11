@@ -17,7 +17,7 @@
 
     <bean id="roomCreator" class="by.imix.games.gamecore.implDefault.Creator">
         <lookup-method name="createRoom" bean="room"/>
-        <lookup-method name="createUser" bean="userMonopoly" />
+        <lookup-method name="createUser" bean="userMonopoly"/>
     </bean>
 
 

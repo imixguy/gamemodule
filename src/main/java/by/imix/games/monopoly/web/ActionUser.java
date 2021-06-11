@@ -16,21 +16,21 @@ public class ActionUser {
     private UserMonopoly user;
     //private Auction auction;
 
-    public static void createInstance(GameMonopoly monopolyGame,UserMonopoly user, ActionMonopolyE action, Object infoAction){
-        ActionUser au=new ActionUser(user,action,infoAction);
-        for(UserMonopoly um:monopolyGame.getListUser()){
+    public static void createInstance(GameMonopoly monopolyGame, UserMonopoly user, ActionMonopolyE action, Object infoAction) {
+        ActionUser au = new ActionUser(user, action, infoAction);
+        for (UserMonopoly um : monopolyGame.getListUser()) {
             um.addActionUser(au);
         }
-        for(UserMonopoly um:monopolyGame.getListViewUser()){
+        for (UserMonopoly um : monopolyGame.getListViewUser()) {
             um.addActionUser(au);
         }
     }
 
     private ActionUser(UserMonopoly user, ActionMonopolyE action, Object infoAction) {
-        this.user=user;
+        this.user = user;
         this.action = action;
         this.infoAction = infoAction;
-        this.dateAction=new Date();
+        this.dateAction = new Date();
     }
 
     public Date getDateAction() {

@@ -14,14 +14,15 @@ public class ChangeFirm {
     private UserMonopoly userChanger;
     private UserMonopoly user;
 
-    public ChangeFirm(){}
+    public ChangeFirm() {
+    }
 
     public ChangeFirm(Set<Integer> indFirmUserChanger, Set<Integer> indFirm, int moneyUserChanger, int money, String userName) {
         this.indFirmUserChanger = indFirmUserChanger;
         this.indFirm = indFirm;
         this.moneyUserChanger = moneyUserChanger;
         this.money = money;
-        this.userName=userName;
+        this.userName = userName;
     }
 
     public ChangeFirm(Set<Integer> indFirmUserChanger, Set<Integer> indFirm, int moneyUserChanger, int money, UserMonopoly userChanger, UserMonopoly user) {

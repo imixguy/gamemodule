@@ -19,12 +19,14 @@ import java.util.List;
  */
 @Controller("monopolyController")
 public class MonopolyController {
-    private Logger log= LoggerFactory.getLogger(MonopolyController.class);
+    private Logger log = LoggerFactory.getLogger(MonopolyController.class);
     @Autowired
     GameManager gameManager;
+
     public void setGameManager(GameManager gameManager) {
         this.gameManager = gameManager;
     }
+
     public GameManager getGameManager() {
         return gameManager;
     }
@@ -32,7 +34,7 @@ public class MonopolyController {
     @RequestMapping(value = "/games/monopoly/game.html", method = RequestMethod.GET)
     public ModelAndView startGame() {
         log.info("games/monopoly/game.html");
-        ModelAndView mav=new ModelAndView();
+        ModelAndView mav = new ModelAndView();
         try {
             GameMonopoly room = getGameManager().getGameByUser(getGameManager().getUser()).get(0);
             mav.setViewName("games/monopoly/polejs");
@@ -42,7 +44,7 @@ public class MonopolyController {
         return mav;
     }
 
-    @RequestMapping(value = "/games/monopoly/getCards", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/getCards", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public List<Card> getCards() {
         try {
@@ -52,11 +54,11 @@ public class MonopolyController {
         }
     }
 
-    @RequestMapping(value = "/games/monopoly/gameinfo", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/gameinfo", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public Room getGameInfo() {
         try {
-            return  getGameManager().getGameByUser(getGameManager().getUser()).get(0);
+            return getGameManager().getGameByUser(getGameManager().getUser()).get(0);
         } catch (Exception e) {
             return null;
         }
@@ -64,22 +66,22 @@ public class MonopolyController {
 
     @RequestMapping(value = "/games/monopoly/createroom.html", method = RequestMethod.GET)
     public String createRoomMonopoly(@RequestParam("countgameuser") int countGameUser) {
-        UserMonopoly userRoom=getGameManager().getUser();
-        if(userRoom==null){
+        UserMonopoly userRoom = getGameManager().getUser();
+        if (userRoom == null) {
             return "redirect:/games/room/rooms.html";
         }
-        GameMonopoly room=getGameManager().createGame();
+        GameMonopoly room = getGameManager().createGame();
         room.addUser(userRoom);
         room.setMaxCountUser(countGameUser);
         return "redirect:/games/monopoly/game.html";
     }
 
 
-
-    private GameMonopoly getGame(){
+    private GameMonopoly getGame() {
         return getGameManager().getGameByUser(getGameManager().getUser()).get(0);
     }
-    private UserMonopoly getUserMonopoly(){
+
+    private UserMonopoly getUserMonopoly() {
         return getGameManager().getUser();
     }
 
@@ -87,7 +89,7 @@ public class MonopolyController {
     @ResponseBody
     public DataForGame loadGameData() {
         try {
-            DataForGame dataForGame=new DataForGame(getGameManager().getUser(), getGameManager().getUser().getAvailableAction(), getUserMonopoly().getAndClearActionsAllUser(),getGame().getAuction());
+            DataForGame dataForGame = new DataForGame(getGameManager().getUser(), getGameManager().getUser().getAvailableAction(), getUserMonopoly().getAndClearActionsAllUser(), getGame().getAuction());
             return dataForGame;
         } catch (Exception e) {
             return null;
@@ -98,9 +100,9 @@ public class MonopolyController {
     @ResponseBody
     public List<UserMonopoly> getStartGamers() {
         try {
-            GameMonopoly gM=getGameManager().getGameByUser(getGameManager().getUser()).get(0);
-            if(gM.isStartGame()){
-                 return gM.getListUser();
+            GameMonopoly gM = getGameManager().getGameByUser(getGameManager().getUser()).get(0);
+            if (gM.isStartGame()) {
+                return gM.getListUser();
             }
             return null;
         } catch (Exception e) {
@@ -110,21 +112,21 @@ public class MonopolyController {
 
 
     @ResponseBody
-    @RequestMapping(value = "games/monopoly/offRoom/{numberRoom}", method = RequestMethod.GET, produces="application/json")
-    public boolean offRoom(@PathVariable("numberRoom")long numberRoom) {
-        GameMonopoly room=getGameManager().getGameByNumberRoom(numberRoom);
+    @RequestMapping(value = "games/monopoly/offRoom/{numberRoom}", method = RequestMethod.GET, produces = "application/json")
+    public boolean offRoom(@PathVariable("numberRoom") long numberRoom) {
+        GameMonopoly room = getGameManager().getGameByNumberRoom(numberRoom);
         return room.removeUser(getGameManager().getUser());
     }
 
     @RequestMapping(value = "/games/monopoly/{numberRoom}/joinRoom.html", method = RequestMethod.GET)
-    public String joinRoom(@PathVariable("numberRoom")long numberRoom) {
-        UserMonopoly userRoom=getGameManager().getUser();
-        if(userRoom==null){
+    public String joinRoom(@PathVariable("numberRoom") long numberRoom) {
+        UserMonopoly userRoom = getGameManager().getUser();
+        if (userRoom == null) {
             return "redirect:/games/room/rooms.html";
         }
         userRoom.getAvailableAction().remove(ActionRoomI.CREATE_ROOM);
-        GameMonopoly room=getGameManager().getGameByNumberRoom(numberRoom);
-        if(room==null){
+        GameMonopoly room = getGameManager().getGameByNumberRoom(numberRoom);
+        if (room == null) {
             return "redirect:/games/room/rooms.html";
         }
         room.addUser(userRoom);

@@ -23,6 +23,7 @@ public interface UserActions {
 
     /**
      * Buy filial for firm
+     *
      * @param indFirm number firm
      */
     void buyFilial(@RequestParam("indFirm[]") int[] indFirm);
@@ -39,12 +40,14 @@ public interface UserActions {
 
     /**
      * put firm by firm
+     *
      * @param indFirm number firm
      */
     void putFirm(@RequestParam("indFirm[]") int[] indFirm);
 
     /**
      * Firms for some type of manipulation (put buy sell redeem)
+     *
      * @param type type action for witch sked firms
      * @return list firm for specific type
      */
@@ -52,6 +55,7 @@ public interface UserActions {
 
     /**
      * Firms for specific user {@nameUser}
+     *
      * @param nameUser name User
      * @return list firm for specific user {@nameUser}
      */
@@ -59,18 +63,21 @@ public interface UserActions {
 
     /**
      * Set filial on defined firms {@indFirm}
+     *
      * @param indFirm list firm for witch need set filial
      */
     void sellFilial(@RequestParam("indFirm[]") Set<Integer> indFirm);
 
     /**
      * Set redeem firms {@indFirm}
+     *
      * @param indFirm list firm for redeem
      */
     void redeemFirm(@RequestParam("indFirm[]") int[] indFirm);
 
     /**
      * Change firm
+     *
      * @param changeFirm offer firm
      */
     void changeFirm(ChangeFirm changeFirm);
@@ -117,12 +124,14 @@ public interface UserActions {
 
     /**
      * Close game
+     *
      * @return message
      */
     String gameClose();
 
     /**
      * Send message
+     *
      * @param message message
      */
     void sendMessage(@RequestParam("message") String message);

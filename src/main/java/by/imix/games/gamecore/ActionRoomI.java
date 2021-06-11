@@ -5,12 +5,12 @@ package by.imix.games.gamecore;
  * All available action for room
  */
 public enum ActionRoomI implements ActionRoom {
-    CREATE_ROOM ("createRoom");
+    CREATE_ROOM("createRoom");
 
-    private String key="";
+    private String key = "";
 
     ActionRoomI(String key) {
-        this.key=key;
+        this.key = key;
     }
 
     public String getKey() {

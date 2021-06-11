@@ -9,13 +9,17 @@ import by.imix.games.gamecore.user.UserRoom;
  * Card of imagination
  */
 public class CardImagination extends CardDefault {
-    /**{@inheritDoc}*/
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void transferCardForUser(Room room, UserRoom userRoom) {
 
     }
 
-    /**{@inheritDoc}*/
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void dropInToCard(Room room, UserRoom userRoom) {
 

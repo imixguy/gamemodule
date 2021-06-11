@@ -19,7 +19,7 @@ import java.util.Set;
 
 @Controller("userActionsController")
 public class UserActionsController implements UserActions {
-    private Logger log= LoggerFactory.getLogger(UserActionsController.class);
+    private Logger log = LoggerFactory.getLogger(UserActionsController.class);
 
     @Autowired
     GameManager gameManager;
@@ -29,40 +29,40 @@ public class UserActionsController implements UserActions {
     }
 
     @Override
-    @RequestMapping(value = "/games/monopoly/actions/throw_cube", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/throw_cube", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public void throwCube() {
-        GameMonopoly game=getGame();
-        if(getUserMonopoly()==game.getCurentUser()){
+        GameMonopoly game = getGame();
+        if (getUserMonopoly() == game.getCurentUser()) {
             game.throwCube();
         }
     }
 
-    private GameMonopoly getGame(){
+    private GameMonopoly getGame() {
         return gameManager.getGameByUser(gameManager.getUser()).get(0);
     }
 
-    private UserMonopoly getUserMonopoly(){
+    private UserMonopoly getUserMonopoly() {
         return gameManager.getUser();
     }
 
 
     @Override
-    @RequestMapping(value = "/games/monopoly/actions/buy_firm", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/buy_firm", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public void buyFirm() {
-        GameMonopoly game=getGame();
-        if(getUserMonopoly()==game.getCurentUser()){
+        GameMonopoly game = getGame();
+        if (getUserMonopoly() == game.getCurentUser()) {
             game.buyFirm();
         }
     }
 
     @Override
-    @RequestMapping(value = "/games/monopoly/actions/buy_filial", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/buy_filial", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public void buyFilial(@RequestParam("indFirm[]") int[] indFirm) {
-        GameMonopoly game=getGame();
-        if(getUserMonopoly()==game.getCurentUser()){
+        GameMonopoly game = getGame();
+        if (getUserMonopoly() == game.getCurentUser()) {
             game.buyFilial(indFirm);
         }
     }
@@ -78,26 +78,26 @@ public class UserActionsController implements UserActions {
     }
 
     @Override
-    @RequestMapping(value = "/games/monopoly/actions/put_firm", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/put_firm", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public void putFirm(@RequestParam("indFirm[]") int[] indFirm) {
-        GameMonopoly game=getGame();
-        if(getUserMonopoly()==game.getCurentUser()){
+        GameMonopoly game = getGame();
+        if (getUserMonopoly() == game.getCurentUser()) {
             game.putFirm(indFirm);
-        }else{
+        } else {
             //штраф
             game.penaltyCheating(getUserMonopoly());
         }
     }
 
     @Override
-    @RequestMapping(value = "/games/monopoly/actions/getPossibleFirm/{type}", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/getPossibleFirm/{type}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public Collection<Integer> getPossibleFirm(@PathVariable String type){
-        GameMonopoly game=getGame();
-        if(getUserMonopoly()==game.getCurentUser()){
+    public Collection<Integer> getPossibleFirm(@PathVariable String type) {
+        GameMonopoly game = getGame();
+        if (getUserMonopoly() == game.getCurentUser()) {
             return game.getPossibleFirm(type);
-        }else{
+        } else {
             //штраф
             game.penaltyCheating(getUserMonopoly());
             return null;
@@ -105,30 +105,30 @@ public class UserActionsController implements UserActions {
     }
 
     @Override
-    @RequestMapping(value = "/games/monopoly/actions/getPossibleFirmCh/{nameUser}", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/getPossibleFirmCh/{nameUser}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public Collection<Integer> getPossibleFirmCh(@PathVariable String nameUser){
-        GameMonopoly game=getGame();
+    public Collection<Integer> getPossibleFirmCh(@PathVariable String nameUser) {
+        GameMonopoly game = getGame();
         return game.getPossibleFirmCh(nameUser);
 
     }
 
     @Override
-    @RequestMapping(value = "/games/monopoly/actions/sell_filial", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/sell_filial", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public void sellFilial(@RequestParam("indFirm[]") Set<Integer> indFirm) {
-        GameMonopoly game=getGame();
-        if(getUserMonopoly()==game.getCurentUser()){
+        GameMonopoly game = getGame();
+        if (getUserMonopoly() == game.getCurentUser()) {
             game.sellFilial(indFirm);
         }
     }
 
     @Override
-    @RequestMapping(value = "/games/monopoly/actions/redeem_firm", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/redeem_firm", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public void redeemFirm(@RequestParam("indFirm[]") int[] indFirm) {
-        GameMonopoly game=getGame();
-        if(getUserMonopoly()==game.getCurentUser()){
+        GameMonopoly game = getGame();
+        if (getUserMonopoly() == game.getCurentUser()) {
             game.redeemFirm(indFirm);
         }
     }
@@ -143,82 +143,81 @@ public class UserActionsController implements UserActions {
     @RequestMapping(value = "/games/monopoly/actions/change_firm", method = RequestMethod.POST)
     @ResponseBody
     public void changeFirm(ChangeFirm changeFirm) {
-        GameMonopoly game=getGame();
-        if(getUserMonopoly()==game.getCurentUser()){
+        GameMonopoly game = getGame();
+        if (getUserMonopoly() == game.getCurentUser()) {
             game.changeFirm(changeFirm);//indFirm,indFirm2,money,money2,userName);
         }
     }
 
 
-
     @Override
-    @RequestMapping(value = "/games/monopoly/actions/change_firm_ok", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/change_firm_ok", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public void changeFirmApprove() {
-        GameMonopoly game=getGame();
-        if(getUserMonopoly()==game.getCurentUser()){
+        GameMonopoly game = getGame();
+        if (getUserMonopoly() == game.getCurentUser()) {
             game.changeFirm(ActionMonopolyE.CHANGE_FIRM_OK);
         }
     }
 
     @Override
-    @RequestMapping(value = "/games/monopoly/actions/change_firm_cancal", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/change_firm_cancal", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public void changeFirmReject() {
-        GameMonopoly game=getGame();
-        if(getUserMonopoly()==game.getCurentUser()){
+        GameMonopoly game = getGame();
+        if (getUserMonopoly() == game.getCurentUser()) {
             game.changeFirm(ActionMonopolyE.CHANGE_FIRM_CANCAL);
         }
     }
 
     @Override
-    @RequestMapping(value = "/games/monopoly/actions/out_prison", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/out_prison", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public void outPrison() {
 
     }
 
     @Override
-    @RequestMapping(value = "/games/monopoly/actions/auction_start", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/auction_start", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public void auctionStart() {
-        GameMonopoly game=getGame();
-        if(getUserMonopoly()==game.getCurentUser()){
+        GameMonopoly game = getGame();
+        if (getUserMonopoly() == game.getCurentUser()) {
             game.startAuction();
         }
     }
 
     @Override
-    @RequestMapping(value = "/games/monopoly/actions/pay_penalty", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/pay_penalty", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public void payPenalty() {
-        GameMonopoly game=getGame();
-        if(getUserMonopoly()==game.getCurentUser()){
+        GameMonopoly game = getGame();
+        if (getUserMonopoly() == game.getCurentUser()) {
             game.payPenalty();
         }
     }
 
     @Override
-    @RequestMapping(value = "/games/monopoly/actions/auction_buy", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/auction_buy", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public void auctionBuy() {
-        GameMonopoly game=getGame();
-        if(game.getAuction()!=null && getUserMonopoly()==game.getAuction().getAuctionUser()){
+        GameMonopoly game = getGame();
+        if (game.getAuction() != null && getUserMonopoly() == game.getAuction().getAuctionUser()) {
             game.getAuction().auctionBuy();
-        }else{
+        } else {
             //штраф
             game.penaltyCheating(getUserMonopoly());
         }
     }
 
     @Override
-    @RequestMapping(value = "/games/monopoly/actions/auction_fold", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/auction_fold", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public void auctionFold() {
-        GameMonopoly game=getGame();
-        if(game.getAuction()!=null && getUserMonopoly()==game.getAuction().getAuctionUser()){
+        GameMonopoly game = getGame();
+        if (game.getAuction() != null && getUserMonopoly() == game.getAuction().getAuctionUser()) {
             game.getAuction().auctionFold();
-        }else{
+        } else {
             //штраф
             game.penaltyCheating(getUserMonopoly());
         }
@@ -226,7 +225,7 @@ public class UserActionsController implements UserActions {
     }
 
     @Override
-    @RequestMapping(value = "/games/monopoly/actions/game_end", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/game_end", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public void gameEnd() {
         getGame().gameEnd(getUserMonopoly());
@@ -235,19 +234,19 @@ public class UserActionsController implements UserActions {
     @Override
     @RequestMapping(value = "/games/monopoly/actions/game_close", method = RequestMethod.GET)
     public String gameClose() {
-        GameMonopoly game=getGame();
+        GameMonopoly game = getGame();
         game.gameClose(getUserMonopoly());
-        if(game.getListUser().size()==0){
+        if (game.getListUser().size() == 0) {
             gameManager.gameEnd(game);
         }
         return "redirect:/games/room/rooms.html";
     }
 
     @Override
-    @RequestMapping(value = "/games/monopoly/actions/send_message", method = RequestMethod.POST, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/send_message", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public void sendMessage(@RequestParam("message") String message) {
-        GameMonopoly game=getGame();
-        ActionUser.createInstance(game,getUserMonopoly(), ActionMonopolyE.SEND_MESSAGE, message);
+        GameMonopoly game = getGame();
+        ActionUser.createInstance(game, getUserMonopoly(), ActionMonopolyE.SEND_MESSAGE, message);
     }
 }

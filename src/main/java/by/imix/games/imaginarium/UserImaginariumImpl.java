@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Mikhail_Kachanouski on 7/26/2017.
  */
-public class UserImaginariumImpl implements UserImaginarium{
+public class UserImaginariumImpl implements UserImaginarium {
     @Override
     public void setPenalty(int penalty) {
 

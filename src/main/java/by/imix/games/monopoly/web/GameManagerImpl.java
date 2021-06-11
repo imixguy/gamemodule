@@ -16,20 +16,22 @@ import java.util.Map;
  * Created by miha on 05.01.2015.
  */
 @Component("gameManager")
-public class GameManagerImpl implements GameManager{
+public class GameManagerImpl implements GameManager {
     @Autowired
     RoomManager roomManager;
+
     public void setRoomManager(RoomManager roomManager) {
         this.roomManager = roomManager;
     }
+
     public RoomManager getRoomManager() {
         return roomManager;
     }
 
     private GameCreator gameCreator;
-    private Map<Long,GameMonopoly> listGame=new HashMap<>();
+    private Map<Long, GameMonopoly> listGame = new HashMap<>();
 
-    private static int numberRoom=0;
+    private static int numberRoom = 0;
 
     @Autowired
     public void setGameCreator(GameCreator gameCreator) {
@@ -43,22 +45,22 @@ public class GameManagerImpl implements GameManager{
 
     @Override
     public GameMonopoly createGame() {
-        GameMonopoly gameMonopoly=gameCreator.createGame();
+        GameMonopoly gameMonopoly = gameCreator.createGame();
         gameMonopoly.setRoom(roomManager.createRoom());
-        listGame.put(gameMonopoly.getNumberRoom(),gameMonopoly);
+        listGame.put(gameMonopoly.getNumberRoom(), gameMonopoly);
         return gameMonopoly;
     }
 
     @Override
-    public List<GameMonopoly> getAllGame()  {
+    public List<GameMonopoly> getAllGame() {
         return new ArrayList<>(listGame.values());
     }
 
     @Override
     public List<GameMonopoly> getAllPermissionRoom(UserMonopoly user) {
-        List<GameMonopoly> listGameFree=new ArrayList<>();
-        for(GameMonopoly room:listGame.values()){
-            if(room.isPermission(user)){
+        List<GameMonopoly> listGameFree = new ArrayList<>();
+        for (GameMonopoly room : listGame.values()) {
+            if (room.isPermission(user)) {
                 listGameFree.add(room);
             }
         }
@@ -72,10 +74,10 @@ public class GameManagerImpl implements GameManager{
 
     @Override
     public List<? extends GameMonopoly> getGameByUser(UserRoom user) {
-        List<GameMonopoly> lGame=new ArrayList<>();
-        for (GameMonopoly room:listGame.values()){
-            for (UserMonopoly usR:room.getListUser()){
-                if(user.getName().equals(usR.getName())){
+        List<GameMonopoly> lGame = new ArrayList<>();
+        for (GameMonopoly room : listGame.values()) {
+            for (UserMonopoly usR : room.getListUser()) {
+                if (user.getName().equals(usR.getName())) {
                     lGame.add(room);
                     break;
                 }
@@ -86,7 +88,7 @@ public class GameManagerImpl implements GameManager{
 
     @Override
     public UserMonopoly getUser() {
-        return (UserMonopoly)roomManager.getUser();
+        return (UserMonopoly) roomManager.getUser();
     }
 
     @Override

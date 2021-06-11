@@ -20,6 +20,7 @@ public interface UserActions {
 
     /**
      * Set association
+     *
      * @param association association
      */
     void setAssociation(String association);

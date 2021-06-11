@@ -20,7 +20,7 @@ import static by.imix.games.monopoly.ActionMonopolyE.RECEIVE_INCOME;
 public class CardPlusMinus extends CardDefault {
     private List<Integer> possibleShtraf;
 
-    public CardPlusMinus(String name,List<Integer> possibleShtraf) {
+    public CardPlusMinus(String name, List<Integer> possibleShtraf) {
         setName(name);
         this.possibleShtraf = possibleShtraf;
     }
@@ -33,26 +33,30 @@ public class CardPlusMinus extends CardDefault {
         this.possibleShtraf = possibleShtraf;
     }
 
-    /**{@inheritDoc}*/
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void transferCardForUser(Room room, UserRoom userRoom) {
         GameMonopoly gameMonopoly = (GameMonopoly) room;
         UserMonopoly userMonopoly = (UserMonopoly) userRoom;
-        Integer pm=userMonopoly.getPenalty();
-        if(pm==0) {
+        Integer pm = userMonopoly.getPenalty();
+        if (pm == 0) {
             pm = possibleShtraf.get(new SecureRandom().nextInt(possibleShtraf.size()));
         }
-        if(pm>0){
+        if (pm > 0) {
             userMonopoly.setMoney(userMonopoly.getMoney() + pm);
-            ActionUser.createInstance(gameMonopoly,userMonopoly, RECEIVE_INCOME, userMonopoly);
+            ActionUser.createInstance(gameMonopoly, userMonopoly, RECEIVE_INCOME, userMonopoly);
             gameMonopoly.nextGamer();
-        }else{
-            ActionUser.createInstance(gameMonopoly,userMonopoly, GET_PENALTY, pm);
+        } else {
+            ActionUser.createInstance(gameMonopoly, userMonopoly, GET_PENALTY, pm);
             userMonopoly.setPenalty(pm);
         }
     }
 
-    /**{@inheritDoc}*/
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void dropInToCard(Room room, UserRoom userRoom) {
     }

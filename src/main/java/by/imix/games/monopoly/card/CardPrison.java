@@ -16,10 +16,10 @@ import static by.imix.games.monopoly.ActionMonopolyE.THROW_CUBE;
 public class CardPrison extends CardDefault {
     private int penalty;
 
-    public CardPrison(String name,int penalty){
+    public CardPrison(String name, int penalty) {
         super();
         setName(name);
-        this.penalty=penalty;
+        this.penalty = penalty;
     }
 
     @Override
@@ -32,8 +32,8 @@ public class CardPrison extends CardDefault {
     @Override
     public void dropInToCard(Room room, UserRoom userRoom) {
         UserMonopoly userMonopoly = (UserMonopoly) userRoom;
-        if(userMonopoly.getPrison()!=0){
-            if(userMonopoly.getPrison()<3){
+        if (userMonopoly.getPrison() != 0) {
+            if (userMonopoly.getPrison() < 3) {
                 userMonopoly.getAvailableAction().add(THROW_CUBE);
             }
         }

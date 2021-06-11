@@ -17,16 +17,19 @@ public interface UserRoom extends UserGame {
 
     //player loose
     boolean isLoose();
+
     //set loose flag
     void setLoose(boolean key);
 
     //player win
     void setWin(boolean b);
+
     //set win flag
     boolean isWin();
 
     //date last entrance
     Date getLastIn();
+
     //set date last entrance
     void checkedTime();
 }

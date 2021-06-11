@@ -15,11 +15,11 @@ public class DataForGame {
     private Set availAction;
     private Auction auction;
 
-    public DataForGame(UserRoom userRoom, Set availAction,List<ActionUser> listAction,Auction auction) {
+    public DataForGame(UserRoom userRoom, Set availAction, List<ActionUser> listAction, Auction auction) {
         this.userRoom = userRoom;
         this.listAction = listAction;
-        this.availAction=availAction;
-        this.auction=auction;
+        this.availAction = availAction;
+        this.auction = auction;
     }
 
     public Set getAvailAction() {

@@ -25,9 +25,9 @@ import java.util.Map;
  */
 @Component("roomManager")
 public class DefaultRoomManager implements RoomManager {
-    private Logger log= LoggerFactory.getLogger(DefaultRoomManager.class);
-    protected Map<Long,Room> listRoom;
-    private static long NEXT_NUMBER_ROOM=0;
+    private Logger log = LoggerFactory.getLogger(DefaultRoomManager.class);
+    protected Map<Long, Room> listRoom;
+    private static long NEXT_NUMBER_ROOM = 0;
     @Autowired
     private Creator creator;
 
@@ -37,10 +37,10 @@ public class DefaultRoomManager implements RoomManager {
 
 
     @Override
-    public Room createRoom(){
-        Room room=creator.createRoom();
+    public Room createRoom() {
+        Room room = creator.createRoom();
         room.setNumberRoom(getNextNumberRoom());
-        listRoom.put(room.getNumberRoom(),room);
+        listRoom.put(room.getNumberRoom(), room);
         return room;
     }
 
@@ -55,18 +55,18 @@ public class DefaultRoomManager implements RoomManager {
 
     @Override
     public List<Room> getAllPermissionRoom() {
-        List<Room> listRoomFree=new ArrayList<>();
-        UserRoom userRoom=getUser();
-        for(Room room:listRoom.values()){
-            if(room.isPermission(userRoom)){
+        List<Room> listRoomFree = new ArrayList<>();
+        UserRoom userRoom = getUser();
+        for (Room room : listRoom.values()) {
+            if (room.isPermission(userRoom)) {
                 listRoomFree.add(room);
             }
         }
         return listRoomFree;
     }
 
-    protected long getNextNumberRoom(){
-        NEXT_NUMBER_ROOM+=1;
+    protected long getNextNumberRoom() {
+        NEXT_NUMBER_ROOM += 1;
         return NEXT_NUMBER_ROOM;
     }
 
@@ -77,13 +77,12 @@ public class DefaultRoomManager implements RoomManager {
     }
 
 
-
-    public List<Room> getRoomByUser(){
-        List<Room> lRoom=new ArrayList<>();
-        UserRoom userRoom=getUser();
-        for (Room room:listRoom.values()){
-            for (UserRoom usR:room.getListUser()){
-                if(userRoom.getName().equals(usR.getName())){
+    public List<Room> getRoomByUser() {
+        List<Room> lRoom = new ArrayList<>();
+        UserRoom userRoom = getUser();
+        for (Room room : listRoom.values()) {
+            for (UserRoom usR : room.getListUser()) {
+                if (userRoom.getName().equals(usR.getName())) {
                     lRoom.add(room);
                     break;
                 }
@@ -93,18 +92,18 @@ public class DefaultRoomManager implements RoomManager {
     }
 
 
-    protected Map<String,UserRoom> listUserRoom=new HashMap<>();
-    private int timeClean=1000*60*10;//10 минут
+    protected Map<String, UserRoom> listUserRoom = new HashMap<>();
+    private int timeClean = 1000 * 60 * 10;//10 минут
 
     @Override
     public UserRoom getUser() {
-        User user=getWebUser();
-        if(user!=null) {
+        User user = getWebUser();
+        if (user != null) {
             UserRoom userD = listUserRoom.get(user.getName());
             if (userD == null) {
                 userD = creator.createUser();
                 userD.setUser(getWebUser());
-                ((UserAuction)userD).getAvailableAction().add(ActionRoomI.CREATE_ROOM);
+                ((UserAuction) userD).getAvailableAction().add(ActionRoomI.CREATE_ROOM);
                 listUserRoom.put(user.getName(), userD);
             }
             userD.checkedTime();
@@ -113,23 +112,23 @@ public class DefaultRoomManager implements RoomManager {
         return null;
     }
 
-    public void cleanOldUser(){
-        List<UserRoom> remListUserGame=new ArrayList<>();
-        Long curDate= new Date().getTime();
-        for(UserRoom user:listUserRoom.values()){
-            if(user.getLastIn().getTime()+timeClean<curDate){
+    public void cleanOldUser() {
+        List<UserRoom> remListUserGame = new ArrayList<>();
+        Long curDate = new Date().getTime();
+        for (UserRoom user : listUserRoom.values()) {
+            if (user.getLastIn().getTime() + timeClean < curDate) {
                 remListUserGame.add(user);
             }
         }
-        for(UserRoom user:remListUserGame){
+        for (UserRoom user : remListUserGame) {
             listUserRoom.remove(user);
         }
     }
 
-    private User getWebUser(){
+    private User getWebUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Object user=auth.getPrincipal();
-        if(user instanceof String){
+        Object user = auth.getPrincipal();
+        if (user instanceof String) {
             return null;
         }
         return ((UserWeb) user).getUser();
